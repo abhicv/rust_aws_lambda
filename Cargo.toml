@@ -1,0 +1,33 @@
+[package]
+name = "learn_lambda"
+version = "0.1.0"
+edition = "2021"
+
+# Starting in Rust 1.62 you can use `cargo add` to add dependencies 
+# to your project.
+#
+# If you're using an older Rust version,
+# download cargo-edit(https://github.com/killercup/cargo-edit#installation) 
+# to install the `add` subcommand.
+#
+# Running `cargo add DEPENDENCY_NAME` will
+# add the latest version of a dependency to the list,
+# and it will keep the alphabetic ordering for you.
+
+[dependencies]
+aws_lambda_events = { version = "0.10.0", default-features = false, features = ["s3", "cloudwatch_events"] }
+lambda_runtime = "0.8.1"
+aws-sdk-s3 = "0.28"
+aws-smithy-http = "0.55.3"
+async-trait = "0.1.68"
+aws-config = "0.55"
+tokio = { version = "1", features = ["macros"] }
+tracing = { version = "0.1", features = ["log"] }
+tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt"] }
+thumbnailer = "0.5.1"
+mime = "0.3.16"
+lettre = { version = "0.11.1", default-features = false, features = ["smtp-transport", "pool", "rustls-tls", "hostname", "builder"] }
+lazy_static = "1.4.0"
+tinytemplate = "1.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "*"
