@@ -1,7 +1,7 @@
 use async_trait::async_trait;
 use aws_sdk_s3::operation::get_object::GetObjectError;
 use aws_sdk_s3::Client as S3Client;
-use aws_smithy_http::byte_stream::ByteStream;
+use aws_sdk_s3::primitives::ByteStream;
 
 #[async_trait]
 pub trait GetFile {
@@ -23,7 +23,7 @@ impl GetFile for S3Client {
         return match output {
             Ok(response) => {
                 let bytes = response.body.collect().await.unwrap().to_vec();
-                tracing::info!("Object is downloaded, size is {}", response.content_length);
+                println!("Object is downloaded, size is {}", response.content_length.unwrap());
                 Ok(bytes)
             }
             Err(err) => {
